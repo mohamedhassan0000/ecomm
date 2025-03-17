@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* App */
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NavBAr */
+i {
+    color: #9fa2a4;
+    font-size: 25px;
+    position: relative;
+    margin-top: 10px;
+    align-self: center;
+    transition: .2s;
+}
+
+i:hover {
+    color: white;
+}
+
+.circle {
+    position: absolute;
+    content: "";
+    width: 25px;
+    height: 25px;
+    background-color: rgb(151, 151, 39);
+    top: -15px;
+    right: -11px;
+    border-radius: 50%;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* footer */
+.footer {
+    padding: 20px;
+    width: 100%;
+    background-color: #2b3035;
+    color: white;
+    margin-top: 50px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer span {
+    color: yellow;
+}
+
+/* card */
+.cards {
+    padding-top: 60px;
+}
+
+.card-produc {
+    transition: .3s;
+}
+
+.card-produc:hover {
+    scale: 1.13;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.cart-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-img {
+    align-self: center;
+    width: 250px;
+    height: 300px;
+    padding: 5px;
+    overflow: hidden;
+}
