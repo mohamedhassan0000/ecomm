@@ -6,12 +6,20 @@ import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, decrease, increase } from "../../redux/cartSlice";
+import Categories from "../Categories";
 
 const Products = () => {
     // selector
     const { products } = useSelector(state => state.products)
     const cartProducts = useSelector(state => state.item.item)
-    console.log(cartProducts);
+    // ========================================================================
+
+
+    // const allCategories = ["All", ...new Set(products.map((i) => i.category))]
+    // console.log(allCategories);
+
+
+    // ========================================================================
 
     // dispatch
     const dispatch = useDispatch()
@@ -35,7 +43,7 @@ const Products = () => {
                 </Link>
                 {
                     cartProducts.find((i) => i.id === product.id) ? (
-                        <div className="d-flex mb-2 align-items-center border rounded shadow-sm bg-light">
+                        <div className="d-flex mx-auto mb-2 align-items-center border rounded shadow-sm bg-light">
                             <Button variant="outline-success" onClick={() => dispatch(increase({ id: product.id }))} className="fw-bold">+</Button>
                             <h3 className="mx-3 text-primary">{cartProducts.find((i) => i.id === product.id).quantity}</h3>
                             <Button variant="outline-danger" onClick={() => dispatch(decrease({ id: product.id }))} className="fw-bold">-</Button>
@@ -52,6 +60,11 @@ const Products = () => {
         </Spinner>)
     return (
         <Container>
+            <Row>
+                <Col>
+                    <Categories />
+                </Col>
+            </Row>
             <Row className=" justify-content-center g-5 cards" >
                 {items}
             </Row>

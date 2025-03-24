@@ -28,14 +28,20 @@ const productsSlice = createSlice({
     name: "products",
     initialState: {
         products: [],
+        allProducts: [],
+        allCats: [],
         item: [],
         loading: false,
         error: null,
     },
     reducers: {
-        // clearItem: (state) => {
-        //     state.item = null;
-        // }
+        filterByCategory: (state, action) => {
+            if (action.payload === "All") {
+                state.products = state.allProducts
+            } else {
+                state.products = state.allProducts.filter((i) => i.category === action.payload);
+            }
+        }
     },
     extraReducers: (builder) => {
         // all products
@@ -46,6 +52,11 @@ const productsSlice = createSlice({
         builder.addCase(getData.fulfilled, (state, action) => {
             state.loading = false
             state.products = action.payload
+            state.allProducts = action.payload
+            state.allCats = ["All", ...new Set(action.payload.map((i) => i.category))]
+            console.log(state.allCats);
+
+            // state.allCats = ["All", ...new Set(state.allCats.map((i) => i.category))]
         })
         builder.addCase(getData.rejected, (state, action) => {
             state.loading = false
@@ -67,5 +78,5 @@ const productsSlice = createSlice({
     }
 })
 
-// export const { clearItem } = productsSlice.actions
+export const { filterByCategory } = productsSlice.actions
 export default productsSlice.reducer
